@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const sampleJson = require("./utils/sampleJson");
 
 const app = express();
+app.use(cors({ origin: "http://localhost:5173" }));
+
 const PORT = 3000;
 
 app.get("/api/v1/formData", (req, res) => {
