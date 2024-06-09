@@ -2,29 +2,33 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./CheckboxList.css";
 
-const CheckboxList = ({ id, label, options, values, onChange }) => {
-  const handleChange = (event) => {
+const CheckboxList = ({ id, label, options, selectedValues, onChange }) => {
+  const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
+    let updatedValues = [...selectedValues];
+
     if (checked) {
-      onChange([...values, value]);
+      updatedValues.push(value);
     } else {
-      onChange(values.filter((v) => v !== value));
+      updatedValues = updatedValues.filter((v) => v !== value);
     }
+
+    onChange(id, updatedValues);
   };
 
   return (
     <div className="checkbox-list">
-      {label && <label className="checkbox-list-label">{label}</label>}
+      <label className="checkbox-list-label">{label}</label>
       {options.map((option) => (
         <div key={option.reactKey} className="checkbox-list-item">
           <input
             type="checkbox"
-            id={`${id}-${option.reactKey}`}
+            id={`${id}_${option.reactKey}`}
             value={option.value}
-            checked={values.includes(option.value)}
-            onChange={handleChange}
+            checked={selectedValues.includes(option.value)}
+            onChange={handleCheckboxChange}
           />
-          <label htmlFor={`${id}-${option.reactKey}`}>{option.display}</label>
+          <label htmlFor={`${id}_${option.reactKey}`}>{option.display}</label>
         </div>
       ))}
     </div>
@@ -33,7 +37,7 @@ const CheckboxList = ({ id, label, options, values, onChange }) => {
 
 CheckboxList.propTypes = {
   id: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       reactKey: PropTypes.string.isRequired,
@@ -41,8 +45,12 @@ CheckboxList.propTypes = {
       display: PropTypes.string.isRequired,
     })
   ).isRequired,
-  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedValues: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func.isRequired,
+};
+
+CheckboxList.defaultProps = {
+  selectedValues: [],
 };
 
 export default CheckboxList;
