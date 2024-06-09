@@ -1,0 +1,25 @@
+.radio-list {
+  margin-bottom: 16px;
+}
+
+.radio-list-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.radio-list-sublabel {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.radio-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.radio-list-item input {
+  margin-right: 8px;
+}

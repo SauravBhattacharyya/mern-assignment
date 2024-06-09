@@ -1,0 +1,16 @@
+.dropdown-single {
+  margin-bottom: 16px;
+}
+
+.dropdown-single-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.dropdown-single-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

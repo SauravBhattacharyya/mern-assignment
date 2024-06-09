@@ -1,0 +1,19 @@
+.checkbox-list {
+  margin-bottom: 16px;
+}
+
+.checkbox-list-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.checkbox-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.checkbox-list-item input {
+  margin-right: 8px;
+}
